@@ -101,7 +101,7 @@ impl From<&Mesh> for BoundingSphere {
             // If the furthest point is outside the sphere, we need to adjust it
             let point_dist = point_n.distance(sphere.origin);
             if point_dist > sphere.radius {
-                let radius_new = (sphere.radius + point_dist) / 2.0;
+                let radius_new = (sphere.radius + point_dist + 0.1) / 2.0;
                 let lerp_ratio = (point_dist - radius_new) / point_dist;
                 sphere = BoundingSphere {
                     origin: sphere.origin.lerp(point_n, lerp_ratio),
